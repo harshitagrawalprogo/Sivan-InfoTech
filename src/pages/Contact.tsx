@@ -3,29 +3,47 @@ import SEOHead from "@/components/SEOHead";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube, Send } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Send,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -36,12 +54,16 @@ const Contact = () => {
     try {
       // Here you would typically send the form data to your backend
       // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast.success("Thank you! Your message has been sent successfully. We'll get back to you soon.");
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      toast.success(
+        "Thank you! Your message has been sent successfully. We'll get back to you soon."
+      );
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      toast.error("Something went wrong. Please try again or contact us directly.");
+      toast.error(
+        "Something went wrong. Please try again or contact us directly."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -51,44 +73,46 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Address",
-      content: "info@sivaninfotech.com",
-      link: "mailto:info@sivaninfotech.com"
+      content: "@sivaninfotech.com",
+      link: "mailto:info@sivaninfotech.com",
     },
     {
       icon: Phone,
       title: "Phone Numbers",
       content: "+91-44-4201-5678\n+91-98765-43210",
-      link: "tel:+914442015678"
+      link: "tel:+914442015678",
     },
     {
       icon: MapPin,
       title: "Physical Address",
-      content: "Old No: 6, New No: 10,\nGround Floor, 2nd Street,\nAbiramapuram, Chennai,\nTamil Nadu, India - 600018"
+      content:
+        "Old No: 6, New No: 10,\nGround Floor, 2nd Street,\nAbiramapuram, Chennai,\nTamil Nadu, India - 600018",
     },
     {
       icon: Clock,
       title: "Office Hours",
-      content: "Monday - Friday: 9:00 AM - 6:00 PM IST\nSaturday: 10:00 AM - 2:00 PM IST\nSunday: Closed"
-    }
+      content:
+        "Monday - Friday: 9:00 AM - 6:00 PM IST\nSaturday: 10:00 AM - 2:00 PM IST\nSunday: Closed",
+    },
   ];
 
   const socialLinks = [
     { icon: Facebook, name: "Facebook", url: "#", color: "text-blue-600" },
     { icon: Instagram, name: "Instagram", url: "#", color: "text-pink-600" },
     { icon: Linkedin, name: "LinkedIn", url: "#", color: "text-blue-700" },
-    { icon: Youtube, name: "YouTube", url: "#", color: "text-red-600" }
+    { icon: Youtube, name: "YouTube", url: "#", color: "text-red-600" },
   ];
 
   return (
     <>
-      <SEOHead 
+      <SEOHead
         title="Contact Us - Sivan InfoTech | Get in Touch"
         description="Contact Sivan InfoTech for inquiries, admissions, or support. Visit our Chennai office or reach out via phone, email, or our contact form."
         keywords="contact Sivan InfoTech, Chennai IT training institute, admissions, support, phone, email"
       />
-      
+
       <Header />
-      
+
       <main className="min-h-screen">
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-r from-primary via-primary/90 to-primary/80">
@@ -101,7 +125,8 @@ const Contact = () => {
                 Get in <span className="text-secondary">Touch</span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 text-white/90">
-                Ready to start your IT career journey? We're here to help with any questions about admissions, courses, or support.
+                Ready to start your IT career journey? We're here to help with
+                any questions about admissions, courses, or support.
               </p>
             </div>
           </div>
@@ -116,7 +141,8 @@ const Contact = () => {
                 <div className="mb-8">
                   <h2 className="text-3xl font-bold mb-4">Send us a Message</h2>
                   <p className="text-muted-foreground text-lg">
-                    Fill out the form below and we'll get back to you as soon as possible.
+                    Fill out the form below and we'll get back to you as soon as
+                    possible.
                   </p>
                 </div>
 
@@ -160,7 +186,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      
+
                       <div>
                         <Label htmlFor="subject">Subject *</Label>
                         <Input
@@ -174,7 +200,7 @@ const Contact = () => {
                           className="mt-1"
                         />
                       </div>
-                      
+
                       <div>
                         <Label htmlFor="message">Message *</Label>
                         <Textarea
@@ -187,10 +213,10 @@ const Contact = () => {
                           className="mt-1 min-h-[120px]"
                         />
                       </div>
-                      
-                      <Button 
-                        type="submit" 
-                        size="lg" 
+
+                      <Button
+                        type="submit"
+                        size="lg"
                         className="w-full"
                         disabled={isSubmitting}
                       >
@@ -204,24 +230,32 @@ const Contact = () => {
               {/* Contact Information */}
               <div>
                 <div className="mb-8">
-                  <h2 className="text-3xl font-bold mb-4">Contact Information</h2>
+                  <h2 className="text-3xl font-bold mb-4">
+                    Contact Information
+                  </h2>
                   <p className="text-muted-foreground text-lg">
-                    Reach out to us through any of these channels. We're always happy to help!
+                    Reach out to us through any of these channels. We're always
+                    happy to help!
                   </p>
                 </div>
 
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
-                    <Card key={index} className="hover:shadow-md transition-shadow">
+                    <Card
+                      key={index}
+                      className="hover:shadow-md transition-shadow"
+                    >
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
                           <div className="p-3 rounded-lg bg-primary/10">
                             <info.icon className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-semibold text-lg mb-2">{info.title}</h3>
+                            <h3 className="font-semibold text-lg mb-2">
+                              {info.title}
+                            </h3>
                             {info.link ? (
-                              <a 
+                              <a
                                 href={info.link}
                                 className="text-primary hover:underline whitespace-pre-line"
                               >
@@ -244,7 +278,8 @@ const Contact = () => {
                   <CardHeader>
                     <CardTitle>Follow Us</CardTitle>
                     <CardDescription>
-                      Stay connected with us on social media for updates and insights
+                      Stay connected with us on social media for updates and
+                      insights
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -273,10 +308,11 @@ const Contact = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Visit Our Office</h2>
               <p className="text-xl text-muted-foreground">
-                Located in the heart of Chennai, easily accessible by public transport
+                Located in the heart of Chennai, easily accessible by public
+                transport
               </p>
             </div>
-            
+
             <Card className="max-w-4xl mx-auto overflow-hidden">
               <div className="aspect-video bg-muted flex items-center justify-center">
                 <div className="text-center">
@@ -301,13 +337,18 @@ const Contact = () => {
               Ready to Start Your Journey?
             </h2>
             <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Don't wait – reach out today and take the first step towards your IT career transformation.
+              Don't wait – reach out today and take the first step towards your
+              IT career transformation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="text-primary">
                 Schedule a Call
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-primary"
+              >
                 Download Brochure
               </Button>
             </div>
